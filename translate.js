@@ -67,5 +67,7 @@ $( document ).ready(function() {
     } else if(id === 'lang-zh') {
       toZH();
     }
+
+    return false;
   });
 });
