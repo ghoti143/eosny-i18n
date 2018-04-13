@@ -41,7 +41,7 @@ function EOSNY_I18N() {
       });
   }
   
-  function lookupZH(el) {
+  function lookupZH(idx, el) {
     var en = $(el).text().trim();
     if(en) {
       var zh = EOSNY_en_zh[en];
@@ -52,7 +52,7 @@ function EOSNY_I18N() {
     }
   }
 
-  function restoreEN(el) {
+  function restoreEN(idx, el) {
     var en = $(el).data('orig');
     if(en) {
       $(this).text(en);
