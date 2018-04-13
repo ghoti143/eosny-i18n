@@ -42,5 +42,5 @@ $( document ).ready(function() {
         '<a href="">EN</a>' + 
         '<a href="">ZH</a>' +
       '</div>';
-  $(body).append(langSel);
+  $('body').append(langSel);
 });
