@@ -26,6 +26,7 @@ function toZH() {
   $( "h1" ).each(function() {
     var en = $(this).text().trim();
     var zh = EOSNY_en_zh[en];
+    $(this).data('orig', en);
     $(this).text(zh);
   });
   
@@ -36,11 +37,35 @@ function toZH() {
   });
 }
 
+function toEN() {
+  $( "h1" ).each(function() {
+    var en = $(this).data('orig');
+    $(this).text(en);
+  });
+  
+  $( "nav a" ).each(function() {
+    var en = $(this).data('orig');
+    $(this).text(en);
+  });
+}
+
 $( document ).ready(function() {
   var langSel = 
       '<div id="lang-selector">' +
-        '<a id="lang-en" class="active">EN</a>' + 
-        '<a id="lang-zh">ZH</a>' +
+        '<a id="lang-en" href="" class="active">EN</a>' + 
+        '<a id="lang-zh" href="">ZH</a>' +
       '</div>';
   $('body').append(langSel);
+  
+  $('#lang-selector a').click(function() {
+    $('#lang-selector a').removeClass('active');
+    $(this).addClass('active');
+    
+    var id = $(this).id();
+    if(id === 'lang-en') {
+      toEN();
+    } else if(id === 'lang-zh') {
+      toZH();
+    }
+  });
 });
