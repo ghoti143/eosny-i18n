@@ -15,7 +15,7 @@ var EOSNY_en_zh = {
 function toZH() {
   $( "h1" ).each(function() {
     var en = $(this).text();
-    var zh = ENSNY_en_zh[en];
+    var zh = EOSNY_en_zh[en];
     $(this).text(zh);
   });
 }
