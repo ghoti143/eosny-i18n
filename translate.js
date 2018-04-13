@@ -9,11 +9,25 @@ var EOSNY_en_zh = {
   'Block Producer Specs': '阻止制片人规格',
   'Our Initiatives': '我们的举措',
   'Our Team': '我们的队伍',
-  'Our Advisors': '我们的顾问'
+  'Our Advisors': '我们的顾问',
+  'Home': '家',
+  'About': '关于',
+  'Events': '活动',
+  'Vote': '投票',
+  'Connect': '连',
+  'Plan': '计划',
+  'Initiatives': '倡议',
+  'Team': '球队'
 }  
 
 function toZH() {
   $( "h1" ).each(function() {
+    var en = $(this).text();
+    var zh = EOSNY_en_zh[en];
+    $(this).text(zh);
+  });
+  
+  $( "nav a" ).each(function() {
     var en = $(this).text();
     var zh = EOSNY_en_zh[en];
     $(this).text(zh);
