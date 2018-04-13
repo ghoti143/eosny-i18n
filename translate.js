@@ -82,6 +82,10 @@ $( document ).ready(function() {
   $('body').append(langSel);
   
   $('#lang-selector a').click(function() {
+    if($(this).hasClass('active')) {
+      return false;
+    }
+    
     $('#lang-selector a').removeClass('active');
     $(this).addClass('active');
     
