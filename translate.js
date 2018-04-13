@@ -42,20 +42,20 @@ function EOSNY_I18N() {
   }
   
   function lookupZH(idx, el) {
-    var en = $(el).text().trim();
+    var en = $(el).parent().text().trim();
     if(en) {
       var zh = EOSNY_en_zh[en];
       if(zh) {
-        $(el).data('orig', en);
-        $(el).text(zh);
+        $(el).parent().data('orig', en);
+        $(el).parent().text(zh);
       }
     }
   }
 
   function restoreEN(idx, el) {
-    var en = $(el).data('orig');
+    var en = $(el).parent().data('orig');
     if(en) {
-      $(this).text(en);
+      $(this).parent().text(en);
     }
   }
 
