@@ -1,4 +1,5 @@
 var EOSNY_en_zh = {
+  //h1
   'EOS New York': 'EOS纽约',
   'About Us': '关于我们',
   'Our Values': '我们的价值',
@@ -10,6 +11,7 @@ var EOSNY_en_zh = {
   'Our Initiatives': '我们的举措',
   'Our Team': '我们的队伍',
   'Our Advisors': '我们的顾问',
+  //menu
   'Home': '家',
   'About': '关于',
   'Events': '活动',
