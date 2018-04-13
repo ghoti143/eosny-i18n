@@ -35,3 +35,12 @@ function toZH() {
     $(this).text(zh);
   });
 }
+
+$( document ).ready(function() {
+  var langSel = 
+      '<div id="lang-selector">' +
+        '<a href="">EN</a>' + 
+        '<a href="">ZH</a>' +
+      '</div>';
+  $(body).append(langSel);
+});
