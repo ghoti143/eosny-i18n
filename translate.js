@@ -22,13 +22,13 @@ var EOSNY_en_zh = {
 
 function toZH() {
   $( "h1" ).each(function() {
-    var en = $(this).text();
+    var en = $(this).text().trim();
     var zh = EOSNY_en_zh[en];
     $(this).text(zh);
   });
   
   $( "nav a" ).each(function() {
-    var en = $(this).text();
+    var en = $(this).text().trim();
     var zh = EOSNY_en_zh[en];
     $(this).text(zh);
   });
