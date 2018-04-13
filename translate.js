@@ -35,28 +35,36 @@ function EOSNY_I18N() {
     'Liya Palagashvili, Ph.D., Advisor': 'Liya Palagashvili，博士，顾问',
   }  
 
-  function lookupZH(index, element) {
-    var en = $(element).text().trim();
-    var zh = EOSNY_en_zh[en];
-    $(element).data('orig', en);
-    $(element).text(zh);
+  function getTextNodesIn(el) {
+      return $(el).find(":not(iframe)").addBack().contents().filter(function() {
+          return this.nodeType == 3;
+      });
+  }
+  
+  function lookupZH(el) {
+    var en = $(el).text().trim();
+    if(en) {
+      var zh = EOSNY_en_zh[en];
+      if(zh) {
+        $(el).data('orig', en);
+        $(el).text(zh);
+      }
+    }
   }
 
-  function restoreEN(index, element) {
-    var en = $(element).data('orig');
-    $(this).text(en);
+  function restoreEN(el) {
+    var en = $(el).data('orig');
+    if(en) {
+      $(this).text(en);
+    }
   }
 
   function toZH() {
-    $( "h1" ).each(lookupZH);
-    $( "nav a" ).each(lookupZH);  
-    $( "h3" ).each(lookupZH);
+    getTextNodesIn("div#site").each(lookupZH);
   }
 
   function toEN() {
-    $( "h1" ).each(restoreEN);
-    $( "nav a" ).each(restoreEN);
-    $( "h3" ).each(restoreEN);
+    getTextNodesIn("div#site").each(restoreEN);
   }
 
   function addLangSelHtml() {
