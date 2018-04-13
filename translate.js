@@ -61,7 +61,7 @@ $( document ).ready(function() {
     $('#lang-selector a').removeClass('active');
     $(this).addClass('active');
     
-    var id = $(this).id();
+    var id = $(this).attr('id');
     if(id === 'lang-en') {
       toEN();
     } else if(id === 'lang-zh') {
