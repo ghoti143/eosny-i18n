@@ -39,8 +39,8 @@ function toZH() {
 $( document ).ready(function() {
   var langSel = 
       '<div id="lang-selector">' +
-        '<a href="">EN</a>' + 
-        '<a href="">ZH</a>' +
+        '<a id="lang-en" class="active">EN</a>' + 
+        '<a id="lang-zh">ZH</a>' +
       '</div>';
   $('body').append(langSel);
 });
