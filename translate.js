@@ -32,39 +32,31 @@ function EOSNY_I18N() {
     'Buddy Deck, Head of Block Production': '块生产主管Buddy Deck',
     'Mike Haggerty, Head of dApp Development': 'dApp Development负责人Mike Haggerty',
     'Joshua Hecht, Advisor': 'Joshua Hecht，顾问',
-    'Liya Palagashvili, Ph.D., Advisor': 'Liya Palagashvili，博士，顾问',
+    'Liya Palagashvili, Ph.D., Advisor': 'Liya Palagashvili，博士，顾问',
   }  
 
-  function getTextNodesIn(el) {
-      return $(el).find(":not(iframe)").addBack().contents().filter(function() {
-          return this.nodeType == 3;
-      });
-  }
-  
-  function lookupZH(idx, el) {
-    var en = $(el).parent().text().trim();
-    if(en) {
-      var zh = EOSNY_en_zh[en];
-      if(zh) {
-        $(el).parent().data('orig', en);
-        $(el).parent().text(zh);
-      }
-    }
+  function lookupZH(index, element) {
+    var en = $(element).text().trim();
+    var zh = EOSNY_en_zh[en];
+    $(element).data('orig', en);
+    $(element).text(zh);
   }
 
-  function restoreEN(idx, el) {
-    var en = $(el).parent().data('orig');
-    if(en) {
-      $(this).parent().text(en);
-    }
+  function restoreEN(index, element) {
+    var en = $(element).data('orig');
+    $(this).text(en);
   }
 
   function toZH() {
-    getTextNodesIn("div#site").each(lookupZH);
+    $( "h1" ).each(lookupZH);
+    $( "nav a" ).each(lookupZH);  
+    $( "h3" ).each(lookupZH);
   }
 
   function toEN() {
-    getTextNodesIn("div#site").each(restoreEN);
+    $( "h1" ).each(restoreEN);
+    $( "nav a" ).each(restoreEN);
+    $( "h3" ).each(restoreEN);
   }
 
   function addLangSelHtml() {
