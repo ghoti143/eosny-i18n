@@ -33,44 +33,28 @@ var EOSNY_en_zh = {
   'Liya Palagashvili, Ph.D., Advisor': 'Liya Palagashvili，博士，顾问',
 }  
 
+function lookupZH(index, element) {
+  var en = $(element).text().trim();
+  var zh = EOSNY_en_zh[en];
+  $(element).data('orig', en);
+  $(element).text(zh);
+}
+
+function restoreEN(index, element) {
+  var en = $(element).data('orig');
+  $(this).text(en);
+}
+
 function toZH() {
-  $( "h1" ).each(function() {
-    var en = $(this).text().trim();
-    var zh = EOSNY_en_zh[en];
-    $(this).data('orig', en);
-    $(this).text(zh);
-  });
-  
-  $( "nav a" ).each(function() {
-    var en = $(this).text().trim();
-    var zh = EOSNY_en_zh[en];
-    $(this).data('orig', en);
-    $(this).text(zh);
-  });
-  
-  $( "h3" ).each(function() {
-    var en = $(this).text().trim();
-    var zh = EOSNY_en_zh[en];
-    $(this).data('orig', en);
-    $(this).text(zh);
-  });
+  $( "h1" ).each(lookupZH);
+  $( "nav a" ).each(lookupZH);  
+  $( "h3" ).each(lookupZH);
 }
 
 function toEN() {
-  $( "h1" ).each(function() {
-    var en = $(this).data('orig');
-    $(this).text(en);
-  });
-  
-  $( "nav a" ).each(function() {
-    var en = $(this).data('orig');
-    $(this).text(en);
-  });
-  
-  $( "h3" ).each(function() {
-    var en = $(this).data('orig');
-    $(this).text(en);
-  });
+  $( "h1" ).each(restoreEN);
+  $( "nav a" ).each(restoreEN);
+  $( "h3" ).each(restoreEN);
 }
 
 $( document ).ready(function() {
@@ -96,6 +80,7 @@ $( document ).ready(function() {
       toZH();
     }
 
+    $(this).blur();
     return false;
   });
 });
