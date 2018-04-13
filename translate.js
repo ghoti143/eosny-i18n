@@ -33,6 +33,7 @@ function toZH() {
   $( "nav a" ).each(function() {
     var en = $(this).text().trim();
     var zh = EOSNY_en_zh[en];
+    $(this).data('orig', en);
     $(this).text(zh);
   });
 }
